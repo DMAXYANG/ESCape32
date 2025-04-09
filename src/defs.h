@@ -140,7 +140,7 @@
 #define DUTY_RAMP 0
 #endif
 #ifndef DUTY_RATE
-#define DUTY_RATE 30
+#define DUTY_RATE 2
 #endif
 #ifndef DUTY_DRAG
 #define DUTY_DRAG 0
@@ -189,7 +189,7 @@
 #define TELEM_PHID 0
 #endif
 #ifndef TELEM_POLES
-#define TELEM_POLES 14
+#define TELEM_POLES 6
 #endif
 #ifndef PROT_STALL
 #define PROT_STALL 0
