@@ -195,7 +195,7 @@
 #define PROT_STALL 0
 #endif
 #ifndef PROT_TEMP
-#define PROT_TEMP 0
+#define PROT_TEMP 120
 #endif
 #ifndef PROT_SENS
 #define PROT_SENS 0
