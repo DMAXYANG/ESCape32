@@ -600,7 +600,7 @@ void main(void) {
 		}
 		throt = 0;
 		TIM6_CR1 = 0;
-		playmusic(hall ? "G_GC" : "GC", cfg.volume);
+		playmusic(hall ? "G_GC" : "C_E#", cfg.volume);
 	}
 #endif
 	laststep();
