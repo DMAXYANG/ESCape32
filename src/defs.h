@@ -116,7 +116,7 @@
 #define TIMING 16
 #endif
 #ifndef SINE_RANGE
-#define SINE_RANGE 0
+#define SINE_RANGE 10
 #endif
 #ifndef SINE_POWER
 #define SINE_POWER 8
@@ -128,7 +128,7 @@
 #define FREQ_MAX 48
 #endif
 #ifndef DUTY_MIN
-#define DUTY_MIN 1
+#define DUTY_MIN 2
 #endif
 #ifndef DUTY_MAX
 #define DUTY_MAX 100
@@ -143,13 +143,13 @@
 #define DUTY_RATE 30
 #endif
 #ifndef DUTY_DRAG
-#define DUTY_DRAG 0
+#define DUTY_DRAG 100
 #endif
 #ifndef DUTY_LOCK
 #define DUTY_LOCK 0
 #endif
 #ifndef THROT_MODE
-#define THROT_MODE 0
+#define THROT_MODE 1
 #endif
 #ifndef THROT_REV
 #define THROT_REV 0
@@ -198,16 +198,16 @@
 #define TELEM_POLES 14
 #endif
 #ifndef PROT_STALL
-#define PROT_STALL 0
+#define PROT_STALL 2500
 #endif
 #ifndef PROT_TEMP
-#define PROT_TEMP 0
+#define PROT_TEMP 100
 #endif
 #ifndef PROT_SENS
 #define PROT_SENS 0
 #endif
 #ifndef PROT_VOLT
-#define PROT_VOLT 0
+#define PROT_VOLT 33
 #endif
 #ifndef PROT_CELLS
 #define PROT_CELLS 0
@@ -216,10 +216,10 @@
 #define PROT_CURR 0
 #endif
 #ifndef MUSIC
-#define MUSIC "dfa#"
+#define MUSIC "CDE#"
 #endif
 #ifndef VOLUME
-#define VOLUME 25
+#define VOLUME 50
 #endif
 #ifndef BEACON
 #define BEACON 50
