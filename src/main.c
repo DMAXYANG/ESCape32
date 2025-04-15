@@ -501,7 +501,7 @@ static void delayf(void) {
 
 static void beep(void) {
 	static const char *const beacons[] = {"EG", "FA", "GB", "AB#", "aDGE"};
-	static const char *const values[] = {"E#", "E#", "E#E#", "E#E#E#", "E#E#E#E#", "E#E#E#E#E#", "E#E#E#E#E#E#", "E#E#E#E#E#E#E#", "E#E#E#E#E#E#E#E#", "E#E#E#E#E#E#E#E#E#", 0};
+	static const char *const values[] = {"E#", "E#", "E#_E#", "E#_E#_E#", "E#_E#_E#_E#", "E#_E#_E#_E#_E#", "E#_E#_E#_E#_E#_E#", "E#_E#_E#_E#_E#_E#_E#", "E#_E#_E#_E#_E#_E#_E#_E#", "E#_E#_E#_E#_E#_E#_E#_E#_E#", 0};
 	if (beacon) {
 		playmusic(beacons[beacon - 1], cfg.beacon);
 		beacon = 0;
