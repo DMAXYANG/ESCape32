@@ -122,7 +122,7 @@
 #define SINE_POWER 8
 #endif
 #ifndef FREQ_MIN
-#define FREQ_MIN 24
+#define FREQ_MIN 48
 #endif
 #ifndef FREQ_MAX
 #define FREQ_MAX 48
@@ -134,13 +134,13 @@
 #define DUTY_MAX 100
 #endif
 #ifndef DUTY_SPUP
-#define DUTY_SPUP 15
+#define DUTY_SPUP 5
 #endif
 #ifndef DUTY_RAMP
 #define DUTY_RAMP 0
 #endif
 #ifndef DUTY_RATE
-#define DUTY_RATE 30
+#define DUTY_RATE 2
 #endif
 #ifndef DUTY_DRAG
 #define DUTY_DRAG 0
@@ -195,13 +195,13 @@
 #define TELEM_PHID 0
 #endif
 #ifndef TELEM_POLES
-#define TELEM_POLES 14
+#define TELEM_POLES 6
 #endif
 #ifndef PROT_STALL
 #define PROT_STALL 0
 #endif
 #ifndef PROT_TEMP
-#define PROT_TEMP 0
+#define PROT_TEMP 110
 #endif
 #ifndef PROT_SENS
 #define PROT_SENS 0
