@@ -104,7 +104,7 @@
 #define ARM 1
 #endif
 #ifndef DAMP
-#define DAMP 1
+#define DAMP 0
 #endif
 #ifndef REVDIR
 #define REVDIR 0
