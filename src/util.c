@@ -53,11 +53,11 @@
 #define LED1_PIN 2
 #define LED2_PORT A
 #define LED2_PIN 15
-#elif LED_MAP == 0xB4B5
+#elif LED_MAP == 0xB5B4
 #define LED1_PORT B
-#define LED1_PIN 4
+#define LED1_PIN 5
 #define LED2_PORT B
-#define LED2_PIN 5
+#define LED2_PIN 4
 #elif LED_MAP == 0xAFB3B4
 #define LED1_PORT A
 #define LED1_PIN 15
