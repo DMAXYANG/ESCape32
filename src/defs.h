@@ -198,7 +198,7 @@
 #define TELEM_POLES 14
 #endif
 #ifndef PROT_STALL
-#define PROT_STALL 2500
+#define PROT_STALL 1800
 #endif
 #ifndef PROT_TEMP
 #define PROT_TEMP 100
