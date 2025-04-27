@@ -48,6 +48,9 @@
 #elif LED_MAP == 0xB8
 #define LED1_PORT B
 #define LED1_PIN 8
+#elif LED_MAP == 0xB5
+#define LED1_PORT B
+#define LED1_PIN 5
 #elif LED_MAP == 0xF2AF
 #define LED1_PORT F
 #define LED1_PIN 2
