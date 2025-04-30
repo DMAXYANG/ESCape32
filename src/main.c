@@ -88,6 +88,7 @@ static volatile char tickmsf;
 static const int hall;
 #else
 static int hall;
+static int power_on = 0;
 
 static int getcode(void) {
 	int x = -1;
@@ -523,7 +524,6 @@ static void beep(void) {
 
 // 按键检测函数
 void check_power_button() {
-    static int power_on = 0;
     if (!power_on) {
         // 等待按键按下开机
         if (!(GPIO(KEY_PORT, IDR) & (1 << KEY_PIN))) {
