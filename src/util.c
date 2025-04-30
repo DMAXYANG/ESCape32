@@ -45,9 +45,9 @@
 #ifndef KEY_MAP
 #elif KEY_MAP=0xAFB3
 #define POWER_PORT A
-#define POWER_PIN1 15
+#define POWER_PIN 15
 #define KEY_PORT B
-#define KEY_PIN2 3
+#define KEY_PIN 3
 #endif
 
 #if LED_MAP == 0xAF
@@ -160,6 +160,11 @@ void initgpio(void) {
 #ifdef RPM_PIN
 	GPIO(RPM_PORT, MODER) = (GPIO(RPM_PORT, MODER) & ~(3 << RPM_PIN * 2)) | 1 << RPM_PIN * 2;
 #endif
+#ifdef KEY_MAP
+	GPIO(POWER_PORT, MODER) = (GPIO(POWER_PORT, MODER) & ~(3 << POWER_PIN * 2)) | 1 << POWER_PIN * 2;
+    	GPIO(KEY_PORT, MODER) &= ~(3 << (KEY_PIN * 2));
+    	GPIO(KEY_PORT, PUPDR) |= (1 << (KEY_PIN * 2));
+#endif	
 }
 
 __attribute__((__weak__))
