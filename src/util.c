@@ -42,6 +42,14 @@
 #define BEC_PIN2 15
 #endif
 
+#ifndef KEY_MAP
+#elif KEY_MAP=0xAFB3
+#define POWER_PORT A
+#define POWER_PIN1 15
+#define KEY_PORT B
+#define KEY_PIN2 3
+#endif
+
 #if LED_MAP == 0xAF
 #define LED1_PORT A
 #define LED1_PIN 15
