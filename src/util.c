@@ -162,6 +162,7 @@ void initgpio(void) {
 #endif
 #ifdef KEY_MAP
 	GPIO(POWER_PORT, MODER) = (GPIO(POWER_PORT, MODER) & ~(3 << POWER_PIN * 2)) | 1 << POWER_PIN * 2;
+	GPIO(POWER_PORT, BSRR) = 1 << POWER_PIN;
     	GPIO(KEY_PORT, MODER) &= ~(3 << (KEY_PIN * 2));
     	GPIO(KEY_PORT, PUPDR) |= (1 << (KEY_PIN * 2));
 #endif	
