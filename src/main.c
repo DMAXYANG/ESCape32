@@ -15,6 +15,7 @@
 ** along with this firmware. If not, see <http://www.gnu.org/licenses/>.
 */
 
+static int power_on = 0;
 #include "common.h"
 
 #define REVISION 14
@@ -88,7 +89,6 @@ static volatile char tickmsf;
 static const int hall;
 #else
 static int hall;
-static int power_on = 0;
 
 static int getcode(void) {
 	int x = -1;
