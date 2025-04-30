@@ -797,6 +797,13 @@ void main(void) {
 		led = x;
 #endif	
 	// 添加按键控制开关机功能
+	//#ifndef KEY_MAP
+	//#elif KEY_MAP=0xAFB3
+	#define POWER_PORT A
+	#define POWER_PIN 15
+	#define KEY_PORT B
+	#define KEY_PIN 3
+	//#endif
 	static int power_on = 0;
 	if (!power_on) {
 	    // 等待按键按下开机
