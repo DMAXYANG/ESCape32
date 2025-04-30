@@ -161,8 +161,17 @@ void initgpio(void) {
 	GPIO(RPM_PORT, MODER) = (GPIO(RPM_PORT, MODER) & ~(3 << RPM_PIN * 2)) | 1 << RPM_PIN * 2;
 #endif
 //#ifdef KEY_MAP
-	GPIO(POWER_PORT, MODER) = (GPIO(POWER_PORT, MODER) & ~(3 << POWER_PIN * 2)) | 1 << POWER_PIN * 2;
+	//GPIO(POWER_PORT, MODER) = (GPIO(POWER_PORT, MODER) & ~(3 << POWER_PIN * 2)) | 1 << POWER_PIN * 2;
 	//GPIO(POWER_PORT, BSRR) = 1 << POWER_PIN;
+	
+	// 配置PA15为推挽输出模式
+	GPIOA_MODER &= ~(3 << (15 * 2));
+	GPIOA_MODER |= (1 << (15 * 2));  // 输出模式
+	GPIOA_OTYPER &= ~(1 << 15);      // 推挽输出
+	GPIOA_OSPEEDR |= (3 << (15 * 2)); // 高速
+	GPIOA_PUPDR &= ~(3 << (15 * 2));  // 无上下拉
+
+	// 配置PB3为上拉输入模式
     	GPIO(KEY_PORT, MODER) &= ~(3 << (KEY_PIN * 2));
     	GPIO(KEY_PORT, PUPDR) |= (1 << (KEY_PIN * 2));
 //#endif	
