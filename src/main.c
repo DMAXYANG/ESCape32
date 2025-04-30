@@ -523,7 +523,7 @@ static void beep(void) {
 }
 
 // 按键检测函数
-void check_power_button() {
+void check_power_button(void) {
     if (!power_on) {
         // 等待按键按下开机
         if (!(GPIO(KEY_PORT, IDR) & (1 << KEY_PIN))) {
