@@ -116,6 +116,7 @@ extern Cfg cfg;
 extern int throt, ertm, erpm, temp1, temp2, volt, curr, csum, dshotval, beepval;
 extern char analog, telreq, telmode, flipdir, beacon, dshotext;
 
+void check_power_button(void);
 void init(void);
 void initio(void);
 void initgpio(void);
