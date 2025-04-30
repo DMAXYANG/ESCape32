@@ -531,12 +531,14 @@ void check_power_button(void) {
             GPIO(POWER_PORT, BSRR) = 1 << POWER_PIN;
             power_on = 1;
         }
-    } else {
+    } else {cutback = 1;  // 设置 cutback 为非零值，点亮 LED
         // 正常工作阶段检测按键状态
         if (!(GPIO(KEY_PORT, IDR) & (1 << KEY_PIN))) {
+		cutback = 1;  // 设置 cutback 为非零值，点亮 LED
             // 按键按下，设置PA15为低电平，单片机关机
             GPIO(POWER_PORT, BSRR) = 0 << POWER_PIN;
             power_on = 0;
+	
         }
     }
 }
@@ -632,7 +634,6 @@ void main(void) {
 	PID bpid = {.Kp = 50, .Ki = 0, .Kd = 1000}; // Stall protection
 	PID cpid = {.Kp = 400, .Ki = 0, .Kd = 600}; // Overcurrent protection
 	for (int curduty = 0, running = 0, braking = 2, cutoff = 0, boost = 0, choke = 0, n = 0;;) {
-	check_power_button();
 		int ccr, arr = CLK_KHZ / cfg.freq_min;
 		int input = cutoff == 3000 ? 0 : throt;
 		int range = cfg.sine_range * 20;
@@ -817,6 +818,7 @@ void main(void) {
 		if (running) {
 			if ((tickms << (throt < 0) & 0x1ff) < (sine ? 0x180 : 0x100)) x = LED_CNT >= 2 ? 2 : 1;
 		} else if (curduty) {
+			check_power_button();
 			if ((tickms & (lock ? 0x2ff : 0x3ff)) < 0x40) x = LED_CNT >= 3 ? 4 : LED_CNT;
 		}
 		if (cutback || cutoff || choke) x |= 1;
