@@ -632,7 +632,6 @@ void main(void) {
 	PID bpid = {.Kp = 50, .Ki = 0, .Kd = 1000}; // Stall protection
 	PID cpid = {.Kp = 400, .Ki = 0, .Kd = 600}; // Overcurrent protection
 	for (int curduty = 0, running = 0, braking = 2, cutoff = 0, boost = 0, choke = 0, n = 0;;) {
-		check_power_button();
 		int ccr, arr = CLK_KHZ / cfg.freq_min;
 		int input = cutoff == 3000 ? 0 : throt;
 		int range = cfg.sine_range * 20;
@@ -818,6 +817,7 @@ void main(void) {
 			if ((tickms << (throt < 0) & 0x1ff) < (sine ? 0x180 : 0x100)) x = LED_CNT >= 2 ? 2 : 1;
 		} else if (curduty) {
 			if ((tickms & (lock ? 0x2ff : 0x3ff)) < 0x40) x = LED_CNT >= 3 ? 4 : LED_CNT;
+			check_power_button();
 		}
 		if (cutback || cutoff || choke) x |= 1;
 		led = x;
