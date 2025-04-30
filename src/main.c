@@ -796,5 +796,22 @@ void main(void) {
 		if (cutback || cutoff || choke) x |= 1;
 		led = x;
 #endif	
+	// 添加按键控制开关机功能
+	static int power_on = 0;
+	if (!power_on) {
+	    // 等待按键按下开机
+	    if (!(GPIO(KEY_PORT, IDR) & (1 << KEY_PIN))) {
+	        // 按键按下，设置PA15为高电平，单片机开始工作
+	        GPIO(POWER_PORT, BSRR) = 1 << POWER_PIN;
+	        power_on = 1;
+	    }
+	} else {
+	    // 正常工作阶段检测按键状态
+	    if (!(GPIO(KEY_PORT, IDR) & (1 << KEY_PIN))) {
+	        // 按键按下，设置PA15为低电平，单片机关机
+	        GPIO(POWER_PORT, BSRR) = 0 << POWER_PIN;
+	        power_on = 0;
+	    }
+	}		
 	}
 }
