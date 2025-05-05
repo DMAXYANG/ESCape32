@@ -529,7 +529,11 @@ void check_power_button(void) {
         if (!(GPIO(KEY_PORT, IDR) & (1 << KEY_PIN))) {
             // 按键按下，设置PA15为高电平，单片机开始工作
             GPIO(POWER_PORT, BSRR) = 1 << POWER_PIN;
+		cutback = 1;  // 设置 cutback 为非零值，点亮 LED
             power_on = 1;
+		delay(500, delayf);
+		GPIO(POWER_PORT, BSRR) = 0 << POWER_PIN;
+		cutback = 0;  // 设置 cutback 为非零值，点亮 LED
         }
     } else {
         // 正常工作阶段检测按键状态
