@@ -550,7 +550,7 @@ void check_power_button(void) {
             GPIO(POWER_PORT, BSRR) = 1 << (POWER_PIN + 16); // 关机（BSRR高位写1清零）
     } else {
        // GPIO(POWER_PORT, BSRR) = 1 << POWER_PIN;
-		GPIO(POWER_PORT, BSRR) = 1 << (POWER_PIN + 16); // 关机（BSRR高位写1清零）
+		cutback = 1;  // 设置 cutback 为非零值，点亮 LED
     }
 }
 
