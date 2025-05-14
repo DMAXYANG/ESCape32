@@ -529,18 +529,17 @@ void check_power_button(void) {
         if (!(GPIO(KEY_PORT, IDR) & (1 << KEY_PIN))) {
             // 按键按下，设置PA15为高电平，单片机开始工作
             GPIO(POWER_PORT, BSRR) = 1 << POWER_PIN;
-		cutback = 1;  // 设置 cutback 为非零值，点亮 LED
             power_on = 1;
-		delay(500, delayf);
-		GPIO(POWER_PORT, BSRR) = 0 << POWER_PIN;
-		cutback = 0;  // 设置 cutback 为非零值，点亮 LED
+	//	GPIO(POWER_PORT, BSRR) = 0 << POWER_PIN;
+	//	GPIO(POWER_PORT, BSRR) = 1 << (POWER_PIN + 16); // 写入高位清零PA15
         }
     } else {
         // 正常工作阶段检测按键状态
         if (!(GPIO(KEY_PORT, IDR) & (1 << KEY_PIN))) {
-		cutback = 1;  // 设置 cutback 为非零值，点亮 LED
+		//  cutback = 1;  // 设置 cutback 为非零值，点亮 LED
             // 按键按下，设置PA15为低电平，单片机关机
-            GPIO(POWER_PORT, BSRR) = 0 << POWER_PIN;
+           // GPIO(POWER_PORT, BSRR) = 0 << POWER_PIN;
+		GPIO(POWER_PORT, BSRR) = 1 << (POWER_PIN + 16); // 关机（BSRR高位写1清零）
             power_on = 0;	
         }
     }
