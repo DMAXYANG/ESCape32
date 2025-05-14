@@ -569,9 +569,9 @@ void main(void) {
 	initgpio();
 	initled();
 	inittelem();
-#ifndef ANALOG
+/* #ifndef ANALOG
 	initio();
-#endif
+#endif */
 	TIM1_BDTR = TIM_DTG | TIM_BDTR_OSSR | TIM_BDTR_MOE;
 	TIM1_ARR = CLK_KHZ / 24 - 1;
 	TIM1_CR1 = TIM_CR1_CEN | TIM_CR1_ARPE;
@@ -645,7 +645,7 @@ void main(void) {
 	PID bpid = {.Kp = 50, .Ki = 0, .Kd = 1000}; // Stall protection
 	PID cpid = {.Kp = 400, .Ki = 0, .Kd = 600}; // Overcurrent protection
 	for (int curduty = 0, running = 0, braking = 2, cutoff = 0, boost = 0, choke = 0, n = 0;;) {
-	//	check_power_button();
+		check_power_button();
 		int ccr, arr = CLK_KHZ / cfg.freq_min;
 		int input = cutoff == 3000 ? 0 : throt;
 		int range = cfg.sine_range * 20;
