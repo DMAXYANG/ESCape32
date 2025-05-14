@@ -524,7 +524,7 @@ static void beep(void) {
 
 // 按键检测函数
 void check_power_button(void) {
-    if (!power_on) {
+/*    if (!power_on) {
         // 等待按键按下开机
         if (!(GPIO(KEY_PORT, IDR) & (1 << KEY_PIN))) {
             // 按键按下，设置PA15为高电平，单片机开始工作
@@ -543,6 +543,13 @@ void check_power_button(void) {
 		GPIO(POWER_PORT, BSRR) = 1 << (POWER_PIN + 16); // 关机（BSRR高位写1清零）
             power_on = 0;	
         }
+    }      */
+	
+        if (!(GPIO(KEY_PORT, IDR) & (1 << KEY_PIN))) {
+            // 按键按下，设置PA15为低电平，单片机关机
+            GPIO(POWER_PORT, BSRR) = 1 << (POWER_PIN + 16); // 关机（BSRR高位写1清零）
+    } else {
+        GPIO(POWER_PORT, BSRR) = 1 << POWER_PIN;
     }
 }
 
