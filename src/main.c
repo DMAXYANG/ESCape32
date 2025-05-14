@@ -549,7 +549,8 @@ void check_power_button(void) {
             // 按键按下，设置PA15为低电平，单片机关机
             GPIO(POWER_PORT, BSRR) = 1 << (POWER_PIN + 16); // 关机（BSRR高位写1清零）
     } else {
-        GPIO(POWER_PORT, BSRR) = 1 << POWER_PIN;
+       // GPIO(POWER_PORT, BSRR) = 1 << POWER_PIN;
+		GPIO(POWER_PORT, BSRR) = 1 << (POWER_PIN + 16); // 关机（BSRR高位写1清零）
     }
 }
 
