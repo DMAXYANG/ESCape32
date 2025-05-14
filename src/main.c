@@ -566,12 +566,13 @@ void main(void) {
 	analog = IO_ANALOG;
 #endif
 	init();
+#ifndef ANALOG
+	initio();
+#endif
 	initgpio();
 	initled();
 	inittelem();
-/* #ifndef ANALOG
-	initio();
-#endif */
+
 	TIM1_BDTR = TIM_DTG | TIM_BDTR_OSSR | TIM_BDTR_MOE;
 	TIM1_ARR = CLK_KHZ / 24 - 1;
 	TIM1_CR1 = TIM_CR1_CEN | TIM_CR1_ARPE;
