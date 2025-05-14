@@ -171,6 +171,8 @@ void initgpio(void) {
 	GPIOA_OSPEEDR |= (3 << (15 * 2)); // 高速
 	GPIOA_PUPDR &= ~(3 << (15 * 2));  // 无上下拉
 
+        GPIO(POWER_PORT, BSRR) = 1 << POWER_PIN;  // 设置PA15为高电平，单片机开始工作
+	
 	// 配置PB3为上拉输入模式
     	GPIO(KEY_PORT, MODER) &= ~(3 << (KEY_PIN * 2));
     	GPIO(KEY_PORT, PUPDR) |= (1 << (KEY_PIN * 2));
